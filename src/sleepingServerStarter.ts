@@ -6,6 +6,8 @@ const logger: LoggerType = getLogger();
 
 let sleepingContainer: SleepingContainer;
 
+process.title = "mcsleepingserverstarter";
+
 process.on("SIGINT", async () => {
   logger.info("[Main] SIGINT signal received.");
   await close();

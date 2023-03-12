@@ -12,7 +12,7 @@ export const DefaultFavIconString =
 export type Settings = {
   serverName: string;
   serverPort: number;
-  bedrockPort: number;
+  bedrockPort?: number;
   maxPlayers: number;
   loginMessage: string;
   serverOnlineMode: boolean;
@@ -32,7 +32,7 @@ export type Settings = {
 const DefaultSettings: Settings = {
   serverName: "SleepingServer, waiting for his prince...",
   serverPort: 25565,
-  bedrockPort: 19132,
+  // bedrockPort: 19132,
   maxPlayers: 20,
 
   loginMessage: "...Waking server up, come back in a minute...",
@@ -65,6 +65,13 @@ export function getSettings(): Settings {
     logger.error("Failed to load setting, using default.", error);
     saveDefault();
   }
-  logger.info(`Retrieved settings:${JSON.stringify(settings)}`);
+  logger.info(
+    `Retrieved settings:${JSON.stringify({
+      ...settings,
+      favIcon: settings.favIcon
+        ? `${settings.favIcon?.substring(0, 38)}...`
+        : undefined,
+    })}`
+  );
   return settings;
 }

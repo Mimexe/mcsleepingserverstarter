@@ -19,9 +19,9 @@
   "dependencies": {
     "@jsprismarine/bedrock-data": "^1.19.50",
     "@jsprismarine/brigadier": "0.2.0-rc.1",
-    "@vincss/prismarine": "^0.1.2",
-    "@vincss/color-parser": "^0.1.2",
-    "@vincss/raknet": "^0.1.2",
+    "@vincss/prismarine": "^0.1.3",
+    "@vincss/color-parser": "^0.1.3",
+    "@vincss/raknet": "^0.1.3",
     "async-exit-hook": "2.0.1",
     "evt": "2.4.13",
     "express": "^4.18.2",

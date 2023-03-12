@@ -1,12 +1,12 @@
 import { Config, Logger, Server } from "@vincss/prismarine";
 
-import { getLogger, LoggerType } from "./sleepingLogger.js";
+import { getLogger, LoggerType, Version } from "./sleepingLogger.js";
 import { ISleepingServer } from "./sleepingServerInterface.js";
 import { Settings } from "./sleepingSettings.js";
 import { PlayerConnectionCallBackType } from "./sleepingTypes.js";
 
 const Address = "0.0.0.0";
-const version = "0.0.0";
+
 const PlayerName = "A BedRock player";
 
 export class SleepingBedrock implements ISleepingServer {
@@ -26,20 +26,18 @@ export class SleepingBedrock implements ISleepingServer {
 
     this.logger = getLogger();
     const logger = new Logger();
-    const config = new Config(version);
+    const config = new Config(Version);
+    config.setMotd(settings.serverName);
     this.server = new Server({
       config,
-      version,
+      version: Version,
       logger,
+      connectionCallBack: this.onConnection,
     });
   }
 
   init = async () => {
-    this.server.bootstrap(
-      Address,
-      this.settings.bedrockPort,
-      this.onConnection
-    );
+    this.server.bootstrap(Address, this.settings.bedrockPort);
   };
 
   private onConnection = () => {

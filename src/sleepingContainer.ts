@@ -51,7 +51,7 @@ export class SleepingContainer implements ISleepingServer {
       await this.mcServer?.init();
     }
 
-    if (this.settings.bedrockPort > 0) {
+    if (this.settings.bedrockPort) {
       this.brServer = new SleepingBedrock(
         this.settings,
         this.playerConnectionCallBack
