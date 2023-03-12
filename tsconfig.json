@@ -7,8 +7,9 @@
         "plugins",
     ],
     "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
+        "target": "ESNext",
+        "module": "NodeNext",
+        "moduleResolution": "nodenext",
         "allowJs": true, 
         "outDir": "./build",
         "rootDir": "./src",

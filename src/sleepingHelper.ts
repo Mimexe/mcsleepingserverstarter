@@ -1,26 +1,25 @@
-import { createConnection } from 'net';
+import { createConnection } from "net";
 
 export const isInDev = () => {
-    if (process.env.NODE_ENV === 'development') {
-        return true;
-    }
-    return false;
-}
+  if (process.env.NODE_ENV === "development") {
+    return true;
+  }
+  return false;
+};
 
-export const isPortTaken = (port: number) => new Promise<boolean>((resolve) => {
-
+export const isPortTaken = (port: number) =>
+  new Promise<boolean>((resolve) => {
     const client = createConnection({ port }, () => {
-        client.end();
-        resolve(true);
+      client.end();
+      resolve(true);
     }).once("error", () => {
-        resolve(false);
+      resolve(false);
     });
-
-});
+  });
 
 export enum ServerStatus {
-    Sleeping = 'Sleeping',
-    Running = 'Running',
-    Starting = 'Starting',
-    Stopped = 'Stopped'
+  Sleeping = "Sleeping",
+  Running = "Running",
+  Starting = "Starting",
+  Stopped = "Stopped",
 }
