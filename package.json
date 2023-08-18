@@ -17,14 +17,14 @@
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
   },
   "dependencies": {
-    "@jsprismarine/prismarine": "^0.1.0-rc.49",
-    "@jsprismarine/raknet": "^0.1.0-rc.49",
+    "@jsprismarine/prismarine": "^0.1.0-rc.51",
+    "@jsprismarine/raknet": "^0.1.0-rc.51",
     "@sfirew/minecraft-motd-parser": "^1.1.1",
     "express": "^4.18.2",
     "express-handlebars": "^7.0.4",
     "js-yaml": "^4.1.0",
-    "minecraft-protocol": "^1.43.2",
-    "prismarine-chat": "^1.8.0",
+    "minecraft-protocol": "^1.44.0",
+    "prismarine-chat": "^1.9.1",
     "winston": "^3.8.2"
   },
   "devDependencies": {
@@ -36,11 +36,11 @@
     "@types/serve-static": "^1.15.1",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
-    "cross-env": "7.0.3",
     "cpx-fixed": "^1.6.0",
+    "cross-env": "7.0.3",
     "eslint": "^8.37.0",
     "eslint-config-prettier": "^8.8.0",
-    "nodemon": "^2.0.22",
+    "nodemon": "^3.0.1",
     "npm-run-all": "^4.1.5",
     "pkg": "^5.8.1",
     "prettier": "^2.8.8",
