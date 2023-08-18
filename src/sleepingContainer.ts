@@ -1,14 +1,14 @@
 import { ChildProcess, execSync, spawn } from "child_process";
 import { platform } from "os";
-import { SleepingBedrock } from "./sleepingBedrock";
-import { SleepingDiscord } from "./sleepingDiscord";
-import { isPortTaken, ServerStatus } from "./sleepingHelper";
-import { getLogger, LoggerType, version } from "./sleepingLogger";
-import { SleepingMcJava } from "./sleepingMcJava";
-import { ISleepingServer } from "./sleepingServerInterface";
-import { getSettings, Settings } from "./sleepingSettings";
-import { PlayerConnectionCallBackType } from "./sleepingTypes";
-import { SleepingWeb } from "./sleepingWeb";
+import { SleepingBedrock } from "./sleepingBedrock.js";
+import { SleepingDiscord } from "./sleepingDiscord.js";
+import { isPortTaken, ServerStatus } from "./sleepingHelper.js";
+import { getLogger, LoggerType, version } from "./sleepingLogger.js";
+import { SleepingMcJava } from "./sleepingMcJava.js";
+import { ISleepingServer } from "./sleepingServerInterface.js";
+import { getSettings, Settings } from "./sleepingSettings.js";
+import { PlayerConnectionCallBackType } from "./sleepingTypes.js";
+import { SleepingWeb } from "./sleepingWeb.js";
 
 export const MC_TIMEOUT = 5000;
 

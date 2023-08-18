@@ -1,7 +1,10 @@
 import { existsSync, mkdirSync } from "fs";
 import { createLogger, format, transports, transport } from "winston";
 
-export const { version } = require("../package.json"); // eslint-disable-line
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import packageJson from "../package.json" assert { type: "json" };
+export const { version } = packageJson;
 
 const DefaultLogger = {
   info: (...params: any) => console.info(params),

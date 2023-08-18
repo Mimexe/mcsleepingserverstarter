@@ -1,6 +1,6 @@
-import { MC_TIMEOUT, SleepingContainer } from "./sleepingContainer";
-import { getLogger, LoggerType } from "./sleepingLogger";
-import { Settings } from "./sleepingSettings";
+import { MC_TIMEOUT, SleepingContainer } from "./sleepingContainer.js";
+import { getLogger, LoggerType } from "./sleepingLogger.js";
+import { Settings } from "./sleepingSettings.js";
 
 const logger: LoggerType = getLogger();
 

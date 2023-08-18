@@ -1,5 +1,5 @@
-import { SleepingContainer } from "./sleepingContainer";
-import { DefaultSettings } from "./sleepingSettings";
+import { DefaultSettings } from "./sleepingSettings.js";
+import { SleepingContainer } from "./sleepingContainer.js";
 
 test("should start the container with default settings", (done) => {
   new SleepingContainer((settings) => {

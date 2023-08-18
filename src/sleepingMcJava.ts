@@ -1,9 +1,9 @@
 import { Client, createServer, Server } from "minecraft-protocol";
-import { getFavIcon, getMOTD, ServerStatus } from "./sleepingHelper";
-import { getLogger, LoggerType } from "./sleepingLogger";
-import { ISleepingServer } from "./sleepingServerInterface";
-import { Settings } from "./sleepingSettings";
-import { PlayerConnectionCallBackType } from "./sleepingTypes";
+import { getFavIcon, getMOTD, ServerStatus } from "./sleepingHelper.js";
+import { getLogger, LoggerType } from "./sleepingLogger.js";
+import { ISleepingServer } from "./sleepingServerInterface.js";
+import { Settings } from "./sleepingSettings.js";
+import { PlayerConnectionCallBackType } from "./sleepingTypes.js";
 
 export class SleepingMcJava implements ISleepingServer {
   server?: Server;
@@ -51,11 +51,11 @@ export class SleepingMcJava implements ISleepingServer {
 
     this.server.on("connection", (client: Client) => {
       !this.settings.hideOnConnectionLogs &&
-      this.logger.info(
-        `A Prince has taken a quick peek. [${client.version}${this.getIp(
-          client
-        )}]`
-      );
+        this.logger.info(
+          `A Prince has taken a quick peek. [${client.version}${this.getIp(
+            client
+          )}]`
+        );
     });
 
     this.server.on("listening", () => {

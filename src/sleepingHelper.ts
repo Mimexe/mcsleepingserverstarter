@@ -2,10 +2,12 @@ import fs from "fs";
 import path from "path";
 import { createConnection } from "net";
 import { autoToHtml, cleanTags } from "@sfirew/minecraft-motd-parser";
-import ChatMessage from "prismarine-chat";
-import { LATEST_MINECRAFT_VERSION } from "./version";
-import { getLogger } from "./sleepingLogger";
-import { Settings } from "./sleepingSettings";
+// import loader from "prismarine-chat";
+// import { LATEST_MINECRAFT_VERSION } from "./version.js";
+import { getLogger } from "./sleepingLogger.js";
+import { Settings } from "./sleepingSettings.js";
+// import ChatMessage from "prismarine-chat";
+// import loader from "prismarine-chat";
 
 export const isInDev = () => {
   if (process.env.NODE_ENV === "development") {
@@ -63,10 +65,11 @@ export const getMOTD = (
     // This automatically escapes any tags in the serverName to prevent XSS
     return autoToHtml(settings.serverName);
   }
-
-  return ChatMessage(settings.version || LATEST_MINECRAFT_VERSION)
-    .MessageBuilder.fromString(settings.serverName, { colorSeparator: "§" })
-    .toJSON();
+  // loader.ChatMessage(settings.version || LATEST_MINECRAFT_VERSION)
+  //  return ChatMessage(settings.version || LATEST_MINECRAFT_VERSION)
+  //    .MessageBuilder.fromString(settings.serverName, { colorSeparator: "§" })
+  //    .toJSON();
+  return {};
 };
 
 export enum ServerStatus {

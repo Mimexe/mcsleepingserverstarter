@@ -3,12 +3,12 @@ import { existsSync } from "fs";
 import { engine } from "express-handlebars";
 import * as http from "http";
 import path from "path";
-import { SleepingContainer } from "./sleepingContainer";
-import { getFavIcon, getMOTD, ServerStatus } from "./sleepingHelper";
-import { getLogger, LoggerType } from "./sleepingLogger";
-import { ISleepingServer } from "./sleepingServerInterface";
-import { Settings } from "./sleepingSettings";
-import { PlayerConnectionCallBackType } from "./sleepingTypes";
+import { SleepingContainer } from "./sleepingContainer.js";
+import { getFavIcon, getMOTD, ServerStatus } from "./sleepingHelper.js";
+import { getLogger, LoggerType } from "./sleepingLogger.js";
+import { ISleepingServer } from "./sleepingServerInterface.js";
+import { Settings } from "./sleepingSettings.js";
+import { PlayerConnectionCallBackType } from "./sleepingTypes.js";
 import { Socket } from "node:net";
 
 export class SleepingWeb implements ISleepingServer {
@@ -155,7 +155,7 @@ export class SleepingWeb implements ISleepingServer {
         this.logger.error(`Dynmap directory at ${dynmapPath} does not exist!`);
       }
     }
-  }
+  };
 
   close = async () => {
     if (this.server) {
@@ -163,5 +163,3 @@ export class SleepingWeb implements ISleepingServer {
     }
   };
 }
-
-
