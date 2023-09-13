@@ -68,7 +68,8 @@ export const getMOTD = (
 
   if (outputType === "html") {
     // This automatically escapes any tags in the serverName to prevent XSS
-    return autoToHtml(motd);
+    // return autoToHtml(motd);
+    return motd;
   }
 
   return ChatMessage(settings.version || LATEST_MINECRAFT_VERSION)
