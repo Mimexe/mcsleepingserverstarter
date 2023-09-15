@@ -110,7 +110,7 @@ export class SleepingBedrock implements ISleepingServer {
     inetAddr: InetAddress
   ) => {
     this.logger.info(`encapsulated ${JSON.stringify(inetAddr)}`);
-    const event = new RaknetEncapsulatedPacketEvent(inetAddr, packet);
+    const event = new RaknetEncapsulatedPacketEvent(inetAddr as any, packet);
     await this.eventManager.emit("raknetEncapsulatedPacket", event);
   };
 
