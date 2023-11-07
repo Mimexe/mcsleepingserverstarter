@@ -3,7 +3,7 @@
 serverName: "SleepingServer, waiting for his prince..."
 # serverMOTD: "SleepingServer, waiting for his prince... [MOTD]" # The server name to display in Minecraft, defaults to serverName if not set
 
-serverPort: 25565
+serverPort: 0
 # bedrockPort: 19132
 loginMessage: "...Waking server up, come back in a minute..."
 serverOnlineMode: true # like in the server.properties, to check the licence of player or not.
@@ -16,6 +16,7 @@ webStopOnStart: false
 startMinecraft: true # false to disable
 minecraftCommand: "java -jar paper.jar nogui" # or paper.jar or whatever flavor you like
 
+customServer: 25565
 # preventStop: true # Prevent the user to stop the server (trought web-server or cli).
 
 # discordWebhookUrl: "https://discord.com/api/webhooks/REPLACE_ME"

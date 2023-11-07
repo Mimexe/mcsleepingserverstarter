@@ -22,6 +22,12 @@ export const getLogger = () => {
       return logger;
     }
 
+    if (process.env.DEFAULT_LOGGER) {
+      initialized = true;
+      logger.info("... Default Logger ...");
+      return logger;
+    }
+
     const loggers: transport[] = [new transports.Console()];
     if (
       !process.env.DISABLE_FILE_LOGS ||

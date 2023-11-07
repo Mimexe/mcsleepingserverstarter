@@ -9,6 +9,7 @@ import { ISleepingServer } from "./sleepingServerInterface";
 import { getSettings, Settings } from "./sleepingSettings";
 import { PlayerConnectionCallBackType } from "./sleepingTypes";
 import { SleepingWeb } from "./sleepingWeb";
+import { SleepingCustomServer } from "./sleepingCustom/sleepingCustomServer";
 
 export const MC_TIMEOUT = 5000;
 
@@ -20,6 +21,7 @@ export class SleepingContainer implements ISleepingServer {
   mcProcess?: ChildProcess;
   brServer?: SleepingBedrock;
   webServer?: SleepingWeb;
+  customServer?: SleepingCustomServer;
 
   discord?: SleepingDiscord;
 
@@ -61,6 +63,11 @@ export class SleepingContainer implements ISleepingServer {
 
     if (this.settings.discordWebhookUrl) {
       this.discord = new SleepingDiscord(this.settings);
+    }
+
+    if (this.settings.customServer) {
+      this.customServer = new SleepingCustomServer(this.settings);
+      await this.customServer.init();
     }
   };
 

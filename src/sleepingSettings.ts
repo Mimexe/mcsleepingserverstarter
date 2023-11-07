@@ -30,6 +30,7 @@ export type Settings = {
   whiteListedNames?: string[];
   hideIpInLogs?: boolean;
   hideOnConnectionLogs?: boolean;
+  customServer?: number;
 };
 
 export const DefaultSettings: Settings = {
