@@ -2,8 +2,9 @@ import { getLogger, LoggerType } from "../sleepingLogger";
 import { ISleepingServer } from "../sleepingServerInterface";
 import { Settings } from "../sleepingSettings";
 import { createServer, Server } from "net";
+import { CustomClient } from "./customClient";
 
-const LoggerName = "[CustomServer]";
+const LoggerName = "[Server]";
 
 export class SleepingCustomServer implements ISleepingServer {
   settings: Settings;
@@ -19,11 +20,13 @@ export class SleepingCustomServer implements ISleepingServer {
     this.logger.info(`${LoggerName} init ${this.settings.customServer}`);
 
     this.server = createServer();
-    this.server.on("connection", () => {
+    this.server.on("connection", (socket) => {
       this.logger.info(`${LoggerName} connection`);
+      new CustomClient(socket);
+      
     });
-    this.server.on("error", () => {
-      this.logger.info(`${LoggerName} error`);
+    this.server.on("error", (error) => {
+      this.logger.info(`${LoggerName} error`, error);
     });
     this.server.on("drop", () => {
       this.logger.info(`${LoggerName} drop`);

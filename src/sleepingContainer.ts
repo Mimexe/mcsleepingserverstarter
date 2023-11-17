@@ -9,7 +9,7 @@ import { ISleepingServer } from "./sleepingServerInterface";
 import { getSettings, Settings } from "./sleepingSettings";
 import { PlayerConnectionCallBackType } from "./sleepingTypes";
 import { SleepingWeb } from "./sleepingWeb";
-import { SleepingCustomServer } from "./sleepingCustom/sleepingCustomServer";
+import { SleepingCustomServer } from "./sleepingCustom/customServer";
 
 export const MC_TIMEOUT = 5000;
 
