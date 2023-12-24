@@ -16,7 +16,7 @@ maxPlayers: 20
 # webAllowRestart: true
 
 startMinecraft: true # false to disable
-minecraftCommand: "java -jar paper.jar nogui" # or paper.jar or whatever flavor you like
+minecraftCommand: "ping 127.0.0.1 -n 1" # or paper.jar or whatever flavor you like
 # minecraftAutostart: true
 # restartDelay: 200
 

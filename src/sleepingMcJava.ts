@@ -44,6 +44,7 @@ export class SleepingMcJava implements ISleepingServer {
       errorHandler: (client, error) =>
         console.warn("SleepingMcJava.errorHandler: ", client, error),
       enforceSecureProfile: this.settings.serverOnlineMode,
+      hideErrors: true,
       // encryption: false,
       // host: '0.0.0.0',
     });
@@ -54,11 +55,11 @@ export class SleepingMcJava implements ISleepingServer {
 
     this.server.on("connection", (client: Client) => {
       !this.settings.hideOnConnectionLogs &&
-      this.logger.info(
-        `A Prince has taken a quick peek. [${client.version}${this.getIp(
-          client
-        )}]`
-      );
+        this.logger.info(
+          `A Prince has taken a quick peek. [${client.version}${this.getIp(
+            client
+          )}]`
+        );
     });
 
     this.server.on("listening", () => {
