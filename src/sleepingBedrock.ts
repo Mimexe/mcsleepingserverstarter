@@ -4,11 +4,11 @@ import {
   RaknetConnectEvent,
   RaknetEncapsulatedPacketEvent,
 } from "@jsprismarine/prismarine/dist/events/Events";
-import PlayerManager from "@jsprismarine/prismarine/dist/player/PlayerManager";
-import { Protocol } from "@jsprismarine/raknet";
-import Connection from "@jsprismarine/raknet/dist/Connection";
-import Listener from "@jsprismarine/raknet/dist/Listener";
-import Identifiers from "@jsprismarine/raknet/dist/protocol/Identifiers";
+//import PlayerManager from "@jsprismarine/prismarine/dist/player/PlayerManager";
+//import { Protocol } from "@jsprismarine/raknet";
+//import Connection from "@jsprismarine/raknet/dist/Connection";
+//import Listener from "@jsprismarine/raknet/dist/Listener";
+//import Identifiers from "@jsprismarine/raknet/dist/protocol/Identifiers";
 import InetAddress from "@jsprismarine/raknet/dist/utils/InetAddress";
 import { getMOTD } from "./sleepingHelper";
 
@@ -16,6 +16,7 @@ import { getLogger, LoggerType } from "./sleepingLogger";
 import { ISleepingServer } from "./sleepingServerInterface";
 import { Settings } from "./sleepingSettings";
 import { Player, PlayerConnectionCallBackType } from "./sleepingTypes";
+import { Server } from "@jsprismarine/prismarine";
 
 const Address = "0.0.0.0";
 const Version = "1.17.41";
@@ -23,9 +24,9 @@ const Version = "1.17.41";
 export class SleepingBedrock implements ISleepingServer {
   settings: Settings;
   logger: LoggerType;
-  listener?: Listener;
-  listenerBuilder: Listener;
-  playerManager: PlayerManager;
+  listener?: any;
+  listenerBuilder: any;
+  playerManager: any;
   private readonly eventManager = new EventManager();
   playerConnectionCallBack: PlayerConnectionCallBackType;
 
@@ -40,22 +41,8 @@ export class SleepingBedrock implements ISleepingServer {
     this.logger = getLogger();
     const config = new Config(Version);
     (config as any).motd = getMOTD(settings, "plain");
-    const server = {
-      getConfig() {
-        return config;
-      },
-      getIdentifiers() {
-        return Identifiers;
-      },
-      getLogger: () => {
-        return this.logger;
-      },
-      getPlayerManager: () => {
-        return this.playerManager;
-      },
-    };
-    this.playerManager = new PlayerManager(server as any);
-    this.listenerBuilder = new Listener(server);
+
+    const server = new Server({logger:(this.logger as any),config , version: Version});
   }
 
   init = async () => {
@@ -80,20 +67,22 @@ export class SleepingBedrock implements ISleepingServer {
         );
       }
     );
+    /*
     this.listener.on("encapsulated", this.handleEncapsulated);
     // this.listener.on('raw', async (buffer: Buffer, inetAddr: InetAddress) => { this.logger.info(`raw ${JSON.stringify(inetAddr)} ${JSON.stringify(buffer)}`) });
 
     this.eventManager.on("raknetConnect", this.handleRaknetConnect);
+    */
   };
 
-  private handleOpenConnection = async (connection: Connection) => {
+  private handleOpenConnection = async (connection: any) => {
     this.logger.info(
       `[BedRock] openConnection ${JSON.stringify(connection.getState())}`
     );
     const event = new RaknetConnectEvent(connection);
     await this.eventManager.emit("raknetConnect", event);
   };
-
+/*
   private handleRaknetConnect = async (
     raknetConnectEvent: RaknetConnectEvent
   ) => {
@@ -113,7 +102,7 @@ export class SleepingBedrock implements ISleepingServer {
     const event = new RaknetEncapsulatedPacketEvent(inetAddr, packet);
     await this.eventManager.emit("raknetEncapsulatedPacket", event);
   };
-
+*/
   close = async () => {
     this.logger.info(`[BedRock] Closing`);
     if (this.listener) {
